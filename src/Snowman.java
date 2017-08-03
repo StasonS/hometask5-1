@@ -1,7 +1,9 @@
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 import java.util.Random;
@@ -34,12 +36,13 @@ public class Snowman extends Application {
 
         Pane root = new Pane();
 
+
 //        Circle circle = new Circle(
 //                primaryStage.getWidth() / 2,
 //                primaryStage.getHeight() / 2,
 //                50);
 
-
+        
         root.getChildren().addAll(generateCircles(circlesCount, height, radiuses));
 
 
@@ -63,11 +66,7 @@ public class Snowman extends Application {
 
     //Generates random number for circle radius (by the task)
     public static int generateRadius(){
-        Random rand = new Random();
-        int radius = rand.nextInt(maxRad);
-        if (radius < minRad) {
-            generateRadius();
-        }
+        int radius = minRad + (int)(Math.random() * ((maxRad - minRad) + 1));
         return radius;
     }
 
