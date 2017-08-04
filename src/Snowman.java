@@ -2,8 +2,8 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 import java.util.Random;
@@ -42,7 +42,7 @@ public class Snowman extends Application {
 //                primaryStage.getHeight() / 2,
 //                50);
 
-        
+
         root.getChildren().addAll(generateCircles(circlesCount, height, radiuses));
 
 
@@ -95,17 +95,59 @@ public class Snowman extends Application {
 
     //Generates a massif of circles by the task
     public Circle[] generateCircles(int count, int height, int[] radiuses){
-        Circle[] circles = new Circle[count];
+        Circle[] circles = new Circle[count + 3];
+
+        Random rand = new Random();
 
         int y = height - 20;//
         int x = makeWidth(maxRad) / 2;
-        for (int i = 0; i < circles.length; i++){
-            circles[i] = new Circle(x, y - radiuses[i], radiuses[i]);
+        for (int i = 0; i < circles.length - 3; i++){
+            Color color = Color.color(
+                    rand.nextDouble(),
+                    rand.nextDouble(),
+                    rand.nextDouble());
+
+            circles[i] = new Circle(x, y - radiuses[i],
+                    radiuses[i], Paint.valueOf(color.toString()));
             try{
                 y = y - radiuses[i] * 2;
             }
             catch (Exception e){}
         }
+
+        Color colorNose = Color.color(
+                rand.nextDouble(),
+                rand.nextDouble(),
+                rand.nextDouble());
+
+        Color colorEye1 = Color.color(
+                rand.nextDouble(),
+                rand.nextDouble(),
+                rand.nextDouble());
+
+        Color colorEye2 = Color.color(
+                rand.nextDouble(),
+                rand.nextDouble(),
+                rand.nextDouble());
+
+
+        circles[circles.length - 3] = new Circle(
+                circles[circles.length - 4].getCenterX(),
+                circles[circles.length - 4].getCenterY(),
+                circles[circles.length - 4].getRadius() / 10,
+                Paint.valueOf(colorNose.toString()));
+
+        circles[circles.length - 2] = new Circle(
+                circles[circles.length - 4].getCenterX() - circles[circles.length - 4].getRadius() / 3,
+                circles[circles.length - 4].getCenterY() - circles[circles.length - 4].getRadius() / 2,
+                circles[circles.length - 4].getRadius() / 10,
+                Paint.valueOf(colorEye1.toString()));
+
+        circles[circles.length - 1] = new Circle(
+                circles[circles.length - 4].getCenterX() + circles[circles.length - 4].getRadius() / 3,
+                circles[circles.length - 4].getCenterY() - circles[circles.length - 4].getRadius() / 2,
+                circles[circles.length - 4].getRadius() / 10,
+                Paint.valueOf(colorEye2.toString()));
 
         return circles;
     }
