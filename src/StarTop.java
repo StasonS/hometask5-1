@@ -4,4 +4,9 @@
 public class StarTop {
     double x;
     double y;
+
+    public StarTop(double x, double y) {
+        this.x = x;
+        this.y = y;
+    }
 }

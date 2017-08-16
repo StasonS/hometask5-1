@@ -14,9 +14,9 @@ import java.util.Scanner;
  */
 public class Snowman extends Application {
 
-    static int circlesCount;
-    static int minRad;
-    static int maxRad;
+    int circlesCount;
+    int minRad;
+    int maxRad;
     final int WIDTH = 400;
     final int HEIGHT = 500;
     static int[] radiuses;
@@ -24,6 +24,8 @@ public class Snowman extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+
+        dataInput();
 
         radiuses = radiuses();
         int height = makeHeight(radiuses);
@@ -54,7 +56,7 @@ public class Snowman extends Application {
     }
 
     //Console input by the task
-    public static void dataInput(){
+    public void dataInput(){
         Scanner sc = new Scanner(System.in);
         System.out.println("Input a number of circles");
         circlesCount = sc.nextInt();
@@ -65,13 +67,13 @@ public class Snowman extends Application {
     }
 
     //Generates random number for circle radius (by the task)
-    public static int generateRadius(){
+    public int generateRadius(){
         int radius = minRad + (int)(Math.random() * ((maxRad - minRad) + 1));
         return radius;
     }
 
     //Returns a massif of numbers. Massif size equals to circlesCount
-    public static int[] radiuses(){
+    public int[] radiuses(){
         int[] r = new int[circlesCount];
         for (int i = 0; i < r.length; i++){
             r[i] = generateRadius();
@@ -156,7 +158,7 @@ public class Snowman extends Application {
 
 
 
-        dataInput();
+//        dataInput();
         launch(args);
     }
 }

@@ -42,18 +42,17 @@ public class Star extends Application {
     public Line[] drawStar(double cx, double cy, double rad){
         Line[] lines = new Line[10];
 
-        StarTop[] starTops = new StarTop[]{new StarTop(), new StarTop(),
-                new StarTop(), new StarTop(), new StarTop(), };
-        starTops[0].x = cx;
-        starTops[0].y = cy - rad;
-        starTops[1].x = cx + Math.cos(18 * (Math.PI / 180)) * rad;
-        starTops[1].y = cy - Math.sin(18 * (Math.PI / 180)) * rad;
-        starTops[2].x = cx + Math.sin(36 * (Math.PI / 180)) * rad;
-        starTops[2].y = cy + Math.cos(36 * (Math.PI / 180)) * rad;
-        starTops[3].x = cx - Math.sin(36 * (Math.PI / 180)) * rad;
-        starTops[3].y = cy + Math.cos(36 * (Math.PI / 180)) * rad;
-        starTops[4].x = cx - Math.cos(18 * (Math.PI / 180)) * rad;
-        starTops[4].y = cy - Math.sin(18 * (Math.PI / 180)) * rad;
+        StarTop[] starTops = new StarTop[]{
+                new StarTop(cx, cy - rad),
+                new StarTop(cx + Math.cos(18 * (Math.PI / 180)) * rad,
+                        cy - Math.sin(18 * (Math.PI / 180)) * rad),
+                new StarTop(cx + Math.sin(36 * (Math.PI / 180)) * rad,
+                        cy + Math.cos(36 * (Math.PI / 180)) * rad),
+                new StarTop(cx - Math.sin(36 * (Math.PI / 180)) * rad,
+                        cy + Math.cos(36 * (Math.PI / 180)) * rad),
+                new StarTop(cx - Math.cos(18 * (Math.PI / 180)) * rad,
+                        cy - Math.sin(18 * (Math.PI / 180)) * rad)
+        };
 
         double d = 0.35;
 
