@@ -33,22 +33,10 @@ public class Snowman extends Application {
         primaryStage.setTitle("Snowman");
         primaryStage.setWidth(makeWidth(maxRad));
         primaryStage.setHeight(height);
-//        primaryStage.setWidth(WIDTH);
-//        primaryStage.setHeight(HEIGHT);
 
         Pane root = new Pane();
 
-
-//        Circle circle = new Circle(
-//                primaryStage.getWidth() / 2,
-//                primaryStage.getHeight() / 2,
-//                50);
-
-
         root.getChildren().addAll(generateCircles(circlesCount, height, radiuses));
-
-
-
 
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
@@ -82,7 +70,7 @@ public class Snowman extends Application {
     }
 
     //Evaluates a height of window
-    public static int makeHeight(int[] radiuses){
+    public int makeHeight(int[] radiuses){
         int sum = 0;
         for (int i : radiuses){
             sum += (i * 2);
@@ -91,7 +79,7 @@ public class Snowman extends Application {
     }
 
     //Evaluates a width of window
-    public static int makeWidth(int maxRad){
+    public int makeWidth(int maxRad){
         return maxRad + 150;
     }
 
@@ -155,10 +143,6 @@ public class Snowman extends Application {
     }
 
     public static void main(String[] args) {
-
-
-
-//        dataInput();
         launch(args);
     }
 }
